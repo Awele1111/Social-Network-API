@@ -18,10 +18,11 @@ const userSchema = new Schema(
       type:String,
       required: true,
       unique: true,
-      validate: {
-        validator: validator.isEmail,
-        message: 'not a valid email'
-      }
+      match: /.+\@.+\..+/,
+      // validate: {
+      //   validator: validator.isEmail,
+      //   message: 'not a valid email'
+      // }
 
     },
 

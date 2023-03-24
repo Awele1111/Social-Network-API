@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
-const validator = require('validator');
-const moment = require('moment');
+// const validator = require('validator');
+// const moment = require('moment');
 
 const reactionSchema = new Schema(
   {
@@ -27,8 +27,8 @@ const reactionSchema = new Schema(
     createdAt:
     {
       type: Date,
-      default: Date.now(),
-      get: dateFormat,
+      default: Date.now,
+      // get: dateFormat,
 
     },
 

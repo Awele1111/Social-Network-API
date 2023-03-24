@@ -56,6 +56,7 @@ app.get('users/:_id', async (req, res) => {
  }});
 
  // create a user 
+//  localhost:3001/api/users
 
  app.post ('/users', async (req, res) => {
     try {
@@ -101,8 +102,7 @@ app.delete('/users/:_id/friends/:friendId'), async (req, res) => {
     res.status(500).json(err)
  }
 });
-    }
-}
+
 
 
 //  delete user by id
