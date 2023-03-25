@@ -1,10 +1,10 @@
 const {User, Thought} = require('../models');
 
 module.exports = {
-    getUsers (req, res) {
+getUsers (req, res) {
         User.find()
-            .then((users) => res.json (users))
-       ,     .catch ((err) => res.status(500).json(err));
+            .then((users) => res.status(200).json(users))
+            .catch ((err) => res.status(500).json(err));
 },
 
 getSingleUser(req, res) {
@@ -13,13 +13,13 @@ getSingleUser(req, res) {
     !user
         ?res.status(400).json({message: 'No user found with this ID'})
         : res.json(user)
-    .catch((err) => res.status(500).json(err));
+    .catch((err) => res.status(500).json(err)))
 },
 
 createUser(req, res) {
     User.create (req.body)
-    .then((userData) => res.json(userData))
-    .catch((err) => res.status(500.json(err));
+    .then((userData) => res.status(200).json(userData))
+    .catch((err) => res.status(500).json(err))
 },
 
 updateUser(req, res) {
@@ -31,12 +31,12 @@ updateUser(req, res) {
     .then((result) =>
         !result
             ? res.status(400).json({message: 'uh oh, something went wrong'})
-            :res.json(result)
+            :res.status(200).json(result)
     )
     .catch((err) => res.status(500).json(err));
 
 },
-deletedUser (req, res) {
+deleteUser (req, res) {
         User.findOneAndDelete({_id:req.params.userId})
             .then((user) =>
             !user
@@ -44,13 +44,14 @@ deletedUser (req, res) {
                 : Thought.deleteMany({_id: {$in: user.thoughts}})
             )
             .then(() => res.json({message: 'User and Thoughts associated with this user have been deleted'})
-            .catch((err) => res.status(500).json(err));
+            .catch((err) => res.status(500).json(err)))
 
 }
-addFriend(req, res) {
-    User.findOneAndUpdate(
-        {_id:req.params.userId },
-        {$addToSet: {friends:req.params}}
-        {new: true}
-    )
+// addFriend(req, res) {
+//     User.findOneAndUpdate(
+//         {_id:req.params.userId },
+//         {$addToSet: {friends:req.params}}
+//         {new: true}
+//     )
+// }
 }

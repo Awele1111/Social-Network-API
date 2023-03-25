@@ -924,4 +924,4 @@ const users = [];
 const getNamePart = () => names[Math.floor(Math.random() * names.length)];
 const getRandomName = () => `${getNamePart()} ${getNamePart()}`;
 
-module.exports = {get};
+module.exports = {getRandomName};
